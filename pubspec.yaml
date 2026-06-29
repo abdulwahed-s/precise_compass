@@ -1,25 +1,37 @@
-name: flutter_compass_v2
-description: A Flutter compass. The heading varies from 0-360, 0 being north.
-version: 1.0.3
-homepage: https://github.com/medyas/flutter_compass_v2
+name: precise_compass
+description: >-
+  Honest, high-accuracy Flutter compass: continuous heading accuracy in degrees,
+  confidence scoring, sensor fusion, and reliable calibration detection.
+version: 0.1.0
+repository: https://github.com/abdulwahed-s/precise_compass
+homepage: https://github.com/abdulwahed-s/precise_compass
+issue_tracker: https://github.com/abdulwahed-s/precise_compass/issues
+topics:
+  - compass
+  - sensors
+  - heading
+  - navigation
+  - location
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  meta: ^1.18.0
 
-environment:
-  sdk: '>=2.12.0 <4.0.0'
-  flutter: '>=1.10.0'
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^10.3.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
   plugin:
     platforms:
       android:
-        package: com.hemanthraj.fluttercompass
-        pluginClass: FlutterCompassPlugin
+        package: com.precisecompass.precise_compass
+        pluginClass: PreciseCompassPlugin
       ios:
-        pluginClass: FlutterCompassPlugin
+        pluginClass: PreciseCompassPlugin

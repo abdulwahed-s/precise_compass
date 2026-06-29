@@ -1,0 +1,12 @@
+# Generated coverage output.
+coverage/
+
+# CI / repository tooling.
+.github/
+tool/
+
+# The example's Dart source is published (for the pub.dev example tab); its
+# platform build scaffolding is not needed there.
+example/android/
+example/ios/
+example/.flutter-plugins-dependencies
