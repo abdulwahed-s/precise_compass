@@ -83,3 +83,11 @@ fastlane/README.md
 .project
 *.bak
 *.classpath
+
+# These files are intentionally committed so the example builds reproducibly
+# from a clean clone (and so `dart pub publish` doesn't warn about tracked
+# files being gitignored).
+!**/android/gradlew
+!**/android/gradlew.bat
+!**/android/**/gradle-wrapper.jar
+!**/Podfile.lock
