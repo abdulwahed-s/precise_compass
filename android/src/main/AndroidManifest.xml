@@ -1,3 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.hemanthraj.fluttercompass">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+      Location permissions are optional. They are only needed for TRUE heading
+      (declination is computed from the device's last known location). Magnetic
+      heading works without any permission. Apps that want true heading must
+      declare and request these permissions themselves.
+    -->
 </manifest>
