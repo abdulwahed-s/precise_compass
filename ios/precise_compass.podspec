@@ -14,7 +14,9 @@ reliable calibration detection for Flutter.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'precise_compass authors' => 'noreply@example.com' }
   s.source           = { :path => '.' }
-  s.source_files     = 'Classes/**/*'
+  # Sources live in the Swift Package layout so the plugin supports both
+  # Swift Package Manager and CocoaPods from a single source of truth.
+  s.source_files     = 'precise_compass/Sources/precise_compass/**/*.swift'
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
   s.swift_version = '5.0'
