@@ -1,0 +1,10 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+linter:
+  rules:
+    # The example is illustrative, not a published API.
+    public_member_api_docs: false
+    # Fire-and-forget UI callbacks (permission/capability probes) are fine here.
+    discarded_futures: false
+    # Cascades hurt readability in widget/test setup code.
+    cascade_invocations: false

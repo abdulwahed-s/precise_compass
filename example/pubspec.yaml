@@ -1,9 +1,11 @@
-name: flutter_compass_example
-description: Demonstrates how to use the flutter_compass plugin.
+name: precise_compass_example
+description: Demonstrates the precise_compass plugin (heading, accuracy, fusion).
+publish_to: none
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
@@ -11,28 +13,13 @@ dependencies:
 
   permission_handler: ^11.3.1
 
-  flutter_compass_v2:
+  precise_compass:
     path: ../
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  very_good_analysis: ^10.3.0
 
-
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
-  #  - images/a_dot_ham.jpeg
-  assets:
-    - assets/compass.jpg
