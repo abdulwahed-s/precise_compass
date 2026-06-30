@@ -1,134 +1,49 @@
-## 1.0.3
-* Fix ios pod issue
+# Changelog
 
-## 1.0.1
-* Fix ios pod issue
-
-## 1.0.0
-* Update the Android implementation
-
-## 0.8.0
-* Add guard on web (Web always returns an empty stream)
-* Heading accounts for orientation on iOS
-* Unregister listeners when detaching engine on Android
-
-## 0.7.0
-* Updates Android Embedding
-* Resolves deprecations warnings
-* New Android Implementation supporting Sensor.TYPE_ROTATION_VECTOR and Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR.
-* Fixes multiple listeners on stream
-* Fixes for null safety
-
-## 0.6.1
-* Flutter Compass no more depends on RxDart
-
-## 0.6.0
-* Migrate to null safety
-
-## 0.5.1
-
-Android: 
-* Remove roll from heading calculations
-* Uses matrix reorientation to do a better job calculating heading "out the back of the phone"
-iOS: 
-* Use the device motion orientation matrix to compute heading out the back of the device. This is much like what is done on Android, and yields a more
-stable and precise heading.
-Dart:
-* Add documentation to flutter_compass.dart.
-
-## 0.5.0
-
-**Breaking Change:** The `events` stream now gives you `CompassEvent` that consists of `heading`, `headingForCamera` and `accuracy`.
-
-Android: Remove roll from heading calculations 
-
-## 0.4.3
-
-Use geomagnetic rotation sensor as fallback on Android
-
-## 0.4.2+1
-
-Minor fix
-
-## 0.4.2
-
-Updated rxDart to 0.24.0
-
-## 0.4.1
-
-Updated README.md
-
-## 0.4.0
-
-**Breaking change:** Uses magnetic heading by default for iOS.
-
-Older versions used True heading and which caused deviations.
-
-## 0.3.7
-
-* Sensor check added on android. `null` is returned as direction when no sensor available.
-
-## 0.3.6
-
-* Upgrade `rxdart` version to `0.23.1` 
-
-## 0.3.5
-
-* Improve `README.md` 
-
-## 0.3.4
-
-* Add `dispose` method 
-
-## 0.3.3
-
-* Update `permission_handler` to 3.2.2
-* Update `rxdart` to 0.22.3
-
-## 0.3.2
-
-* Android: The plugin will now remember the last read azimuth. This will be done
-  across Isolates using a static variable. Additionally, the value is cached 
-  _within_ the isolate with the introduction of a RxDart `BehaviorSubject`.
-  Reading the current azimuth using `await FlutterCompass.events.first` will 
-  therefore not hang anymore when th user has not moved the handset at all.
-* Sample updated to cover the functional updates in Android.
-* Added missing locatio permissions to the Android example which prevented the
-  permission dialog from being shown.
-
-## 0.3.1
-
-* iOS: Remove permission request when Plugin is instantiated. Library users are
-  responsible to request location permission by themselves.
-* Request permission in the example directly.
-
-## 0.3.0
-
-* Replace kotlin code with simple java to reduce integration complexity
-
-## 0.2.0
-
-* Upgrade Android build components (Kotlin version)
-  **Breaking change**. Migrate from the deprecated original Android Support
-  Library to AndroidX. This shouldn't result in any functional changes, but it
-  requires any Android apps using this plugin to [also
-  migrate](https://developer.android.com/jetpack/androidx/migrate) if they're
-  using the original support library.
-* Upgrade iOS component to Swift 4.2
+All notable changes to this project are documented here. The format is based on
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres
+to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## 0.1.0
 
-* Added example
-* Added public api docs
+Initial release of `precise_compass`, a ground-up rework of the
+`flutter_compass_v2` fork focused on *honest, continuous* heading accuracy.
 
-## 0.0.3
+### Added
+- `PreciseCompass` facade: `heading`, `headingStream({config})`,
+  `capabilities()`.
+- `CompassReading` with **continuous** `accuracyDegrees`, a normalized
+  `CompassAccuracy` bucket, a `0..1` `confidence` score, debounced
+  `shouldCalibrate`, `calibrationStatus`, `source`, `magneticFieldMagnitude`,
+  and optional `pitch`/`roll`.
+- Keystone accuracy from Android `TYPE_ROTATION_VECTOR.values[4]` and iOS
+  `CLHeading.headingAccuracy`, with a documented OS-status fallback.
+- Magnetic-interference detection from field magnitude (configurable plausible
+  band, default 25–65 µT).
+- Confidence model gated by source quality and field health (see
+  `ARCHITECTURE.md`).
+- Calibration hysteresis state machine (no flicker, no cold-start false
+  positive).
+- Angular-wraparound-safe low-pass smoothing.
+- Sensor-fusion modes: `rotationVector`, `geomagnetic`, manual complementary
+  `fusion`, and `auto` selection from device capabilities.
+- `CompassCapabilities` probe (sensors present, true-heading support,
+  recommended mode).
+- Configurable `SensorRate`, `HeadingReference`, smoothing, and iOS calibration
+  HUD suppression.
+- Full-orientation heading on Android (display-rotation remap) and iOS
+  (interface-orientation adjustment).
+- Native Android plugin rewritten clean-room (MIT); structured, versioned event
+  payload.
+- iOS plugin with `locationManagerShouldDisplayHeadingCalibration` HUD control
+  and CoreMotion pitch/roll.
+- Pure-Dart domain core with ≥90% line coverage; mocked platform-channel tests;
+  fixture-based regression tests; example app.
 
-* bug fixes
+### Changed
+- Package renamed from `flutter_compass_v2` to `precise_compass`; Android plugin
+  relocated to `com.precisecompass.precise_compass`.
 
-## 0.0.2
-
-* Android emulator fix
-
-## 0.0.1
-
-* flutter compass plugin
+### Removed
+- GPL-licensed Android helper sources inherited by the fork were deleted and
+  reimplemented from scratch to keep the package MIT-clean.
