@@ -1,21 +1,15 @@
 PODS:
   - Flutter (1.0.0)
-  - precise_compass (0.1.0):
-    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - precise_compass (from `.symlinks/plugins/precise_compass/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  precise_compass:
-    :path: ".symlinks/plugins/precise_compass/ios"
 
 SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  precise_compass: 0b951135d3c60ceb1ca9fa7ac9a6fbfb720c020b
 
 PODFILE CHECKSUM: f3734cf2c64ab93db34ebd0461528389a119c1e8
 
