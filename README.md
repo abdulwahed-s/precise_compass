@@ -17,6 +17,12 @@ your app never has to lie to its users about how good the heading is.
 > interference the status misses, and folds everything into one trustworthy
 > `confidence` value and a non-flickering `shouldCalibrate` flag.
 
+<p align="center">
+  <img src="screenshots/compass.png" width="240" alt="Live heading with continuous accuracy and a confidence meter">
+  <img src="screenshots/capabilities.png" width="240" alt="Per-device capability readout and configuration">
+  <img src="screenshots/demo.gif" width="240" alt="Live compass demo">
+</p>
+
 ## Why it exists
 
 Compass headings are only useful if you know when *not* to trust them — qibla

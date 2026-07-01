@@ -12,6 +12,11 @@ topics:
   - heading
   - navigation
   - location
+screenshots:
+  - description: "Live heading with continuous accuracy (degrees) and a confidence meter."
+    path: screenshots/compass.png
+  - description: "Per-device capability readout and configuration (reference, rate, fusion)."
+    path: screenshots/capabilities.png
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
