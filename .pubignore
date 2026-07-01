@@ -1,3 +1,11 @@
+# Build artifacts and tool caches. A .pubignore replaces the repository
+# .gitignore in this directory, so these must be re-listed here or pub would
+# bundle them (e.g. build/ holds multi-MB Dart .dill compile caches).
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+
 # Generated coverage output.
 coverage/
 
