@@ -19,8 +19,8 @@ screenshots:
     path: screenshots/capabilities.png
 
 environment:
-  sdk: ">=3.4.0 <4.0.0"
-  flutter: ">=3.10.0"
+  sdk: ^3.12.0
+  flutter: ">=3.44.0"
 
 dependencies:
   flutter:
