@@ -2,7 +2,7 @@ name: precise_compass
 description: >-
   Honest, high-accuracy Flutter compass: continuous heading accuracy in degrees,
   confidence scoring, sensor fusion, and reliable calibration detection.
-version: 0.1.0
+version: 0.2.0
 repository: https://github.com/abdulwahed-s/precise_compass
 homepage: https://github.com/abdulwahed-s/precise_compass
 issue_tracker: https://github.com/abdulwahed-s/precise_compass/issues
