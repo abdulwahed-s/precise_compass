@@ -111,11 +111,11 @@ enum SensorRate {
 
   /// The nominal target sampling period for this rate.
   Duration get samplingPeriod => switch (this) {
-        SensorRate.fastest => const Duration(milliseconds: 5),
-        SensorRate.ui => const Duration(milliseconds: 16),
-        SensorRate.normal => const Duration(milliseconds: 33),
-        SensorRate.batterySaving => const Duration(milliseconds: 100),
-      };
+    SensorRate.fastest => const Duration(milliseconds: 5),
+    SensorRate.ui => const Duration(milliseconds: 16),
+    SensorRate.normal => const Duration(milliseconds: 33),
+    SensorRate.batterySaving => const Duration(milliseconds: 100),
+  };
 }
 
 /// The fusion strategy used to produce headings.

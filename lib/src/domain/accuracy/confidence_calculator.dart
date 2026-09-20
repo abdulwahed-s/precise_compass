@@ -75,21 +75,24 @@ double computeConfidence({
 }) {
   final accuracyScore = accuracyDegrees < 0
       ? ConfidenceWeights.unknownAccuracyScore
-      : (1 - accuracyDegrees / ConfidenceWeights.accuracyZeroAtDegrees)
-          .clamp(0.0, 1.0);
+      : (1 - accuracyDegrees / ConfidenceWeights.accuracyZeroAtDegrees).clamp(
+          0.0,
+          1.0,
+        );
 
   final stabilityScore = headingStabilityDegrees == null
       ? ConfidenceWeights.unknownNeutralScore
       : (1 - headingStabilityDegrees / ConfidenceWeights.stabilityZeroAtDegrees)
-          .clamp(0.0, 1.0);
+            .clamp(0.0, 1.0);
 
-  final base = ConfidenceWeights.accuracy * accuracyScore +
+  final base =
+      ConfidenceWeights.accuracy * accuracyScore +
       ConfidenceWeights.stability * stabilityScore;
 
   final fieldGate = fieldScore == null
       ? 1.0
       : ConfidenceWeights.fieldGateFloor +
-          (1 - ConfidenceWeights.fieldGateFloor) * fieldScore.clamp(0.0, 1.0);
+            (1 - ConfidenceWeights.fieldGateFloor) * fieldScore.clamp(0.0, 1.0);
 
   return (base * sourceQualityScore(source) * fieldGate).clamp(0.0, 1.0);
 }

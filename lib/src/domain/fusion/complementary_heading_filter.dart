@@ -15,10 +15,10 @@ class ComplementaryHeadingFilter {
   /// Small gains (the default `0.05`) trust the gyro more and reject magnetic
   /// noise; larger gains track the magnetometer faster but are jumpier.
   ComplementaryHeadingFilter({this.magnetometerGain = 0.05})
-      : assert(
-          magnetometerGain > 0 && magnetometerGain <= 1,
-          'magnetometerGain must be in (0, 1]',
-        );
+    : assert(
+        magnetometerGain > 0 && magnetometerGain <= 1,
+        'magnetometerGain must be in (0, 1]',
+      );
 
   /// The fraction of the magnetometer correction applied each step.
   final double magnetometerGain;

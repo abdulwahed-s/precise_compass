@@ -16,16 +16,15 @@ void main() {
     int? status,
     double? field,
     int ms = 0,
-  }) =>
-      RawCompassData(
-        source: source,
-        accuracyDegrees: accuracy,
-        magneticHeading: magnetic,
-        trueHeading: trueHeading,
-        osAccuracyStatus: status,
-        magneticFieldMagnitude: field,
-        timestamp: at(ms),
-      );
+  }) => RawCompassData(
+    source: source,
+    accuracyDegrees: accuracy,
+    magneticHeading: magnetic,
+    trueHeading: trueHeading,
+    osAccuracyStatus: status,
+    magneticFieldMagnitude: field,
+    timestamp: at(ms),
+  );
 
   CompassPipeline noSmoothing() =>
       CompassPipeline(config: const CompassConfig(smoothingFactor: 0));

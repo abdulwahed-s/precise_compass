@@ -55,32 +55,34 @@ void main() {
   });
 
   RawCompassData sample(double magnetic) => RawCompassData(
-        source: HeadingSource.rotationVector,
-        accuracyDegrees: 5,
-        magneticHeading: magnetic,
-        timestamp: DateTime(2026),
-      );
+    source: HeadingSource.rotationVector,
+    accuracyDegrees: 5,
+    magneticHeading: magnetic,
+    timestamp: DateTime(2026),
+  );
 
-  test('registers on listen, maps through pipeline, releases on cancel',
-      () async {
-    expect(fake.listens, 0);
+  test(
+    'registers on listen, maps through pipeline, releases on cancel',
+    () async {
+      expect(fake.listens, 0);
 
-    final readings = <CompassReading>[];
-    final sub = PreciseCompass.headingStream(
-      config: const CompassConfig(smoothingFactor: 0),
-    ).listen(readings.add);
-    await pumpEventQueue();
-    expect(fake.listens, 1, reason: 'sensors register lazily on listen');
+      final readings = <CompassReading>[];
+      final sub = PreciseCompass.headingStream(
+        config: const CompassConfig(smoothingFactor: 0),
+      ).listen(readings.add);
+      await pumpEventQueue();
+      expect(fake.listens, 1, reason: 'sensors register lazily on listen');
 
-    fake.source.add(sample(90));
-    await pumpEventQueue();
-    expect(readings, hasLength(1));
-    expect(readings.first.heading, closeTo(90, 1e-9));
-    expect(readings.first.accuracy, CompassAccuracy.high);
+      fake.source.add(sample(90));
+      await pumpEventQueue();
+      expect(readings, hasLength(1));
+      expect(readings.first.heading, closeTo(90, 1e-9));
+      expect(readings.first.accuracy, CompassAccuracy.high);
 
-    await sub.cancel();
-    expect(fake.cancels, 1, reason: 'sensors release on cancel');
-  });
+      await sub.cancel();
+      expect(fake.cancels, 1, reason: 'sensors release on cancel');
+    },
+  );
 
   test('does not register sensors until first listen', () async {
     PreciseCompass.headingStream(); // build but do not listen

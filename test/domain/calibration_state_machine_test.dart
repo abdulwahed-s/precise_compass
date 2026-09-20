@@ -63,11 +63,12 @@ void main() {
     });
 
     test('honors custom durations', () {
-      final m = CalibrationStateMachine(
-        assertAfter: const Duration(milliseconds: 500),
-      )
-        ..update(isGood: false, timestamp: at(0))
-        ..update(isGood: false, timestamp: at(600));
+      final m =
+          CalibrationStateMachine(
+              assertAfter: const Duration(milliseconds: 500),
+            )
+            ..update(isGood: false, timestamp: at(0))
+            ..update(isGood: false, timestamp: at(600));
       expect(m.status, CalibrationStatus.calibrating);
     });
   });

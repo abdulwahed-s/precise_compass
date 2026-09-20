@@ -37,11 +37,11 @@ void main() {
 
     test('decreases monotonically as accuracy degrees grow', () {
       double conf(double deg) => computeConfidence(
-            accuracyDegrees: deg,
-            source: HeadingSource.rotationVector,
-            fieldScore: 1,
-            headingStabilityDegrees: 0,
-          );
+        accuracyDegrees: deg,
+        source: HeadingSource.rotationVector,
+        fieldScore: 1,
+        headingStabilityDegrees: 0,
+      );
       expect(conf(0), greaterThan(conf(10)));
       expect(conf(10), greaterThan(conf(20)));
       expect(conf(20), greaterThan(conf(45)));
@@ -49,11 +49,11 @@ void main() {
 
     test('decreases as field health worsens', () {
       double conf(double field) => computeConfidence(
-            accuracyDegrees: 5,
-            source: HeadingSource.rotationVector,
-            fieldScore: field,
-            headingStabilityDegrees: 0,
-          );
+        accuracyDegrees: 5,
+        source: HeadingSource.rotationVector,
+        fieldScore: field,
+        headingStabilityDegrees: 0,
+      );
       expect(conf(1), greaterThan(conf(0.5)));
       expect(conf(0.5), greaterThan(conf(0)));
     });

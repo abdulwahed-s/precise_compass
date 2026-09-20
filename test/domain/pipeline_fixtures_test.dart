@@ -40,12 +40,14 @@ void main() {
       expect(last.confidence, lessThan(0.6));
     });
 
-    test('cold-start unreliability does not cause a false calibration alarm',
-        () {
-      final readings = _run(uncalibratedStartupSequence());
-      expect(readings.any((r) => r.shouldCalibrate), isFalse);
-      expect(readings.last.calibrationStatus, CalibrationStatus.calibrated);
-    });
+    test(
+      'cold-start unreliability does not cause a false calibration alarm',
+      () {
+        final readings = _run(uncalibratedStartupSequence());
+        expect(readings.any((r) => r.shouldCalibrate), isFalse);
+        expect(readings.last.calibrationStatus, CalibrationStatus.calibrated);
+      },
+    );
 
     test('no-gyro device still produces a usable geomagnetic heading', () {
       final readings = _run(noGyroDeviceSequence());

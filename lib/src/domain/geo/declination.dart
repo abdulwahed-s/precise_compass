@@ -14,21 +14,18 @@ import 'package:precise_compass/src/domain/geo/angle_math.dart';
 double magneticToTrueHeading(
   double magneticHeadingDegrees,
   double declinationDegrees,
-) =>
-    normalizeDegrees(magneticHeadingDegrees + declinationDegrees);
+) => normalizeDegrees(magneticHeadingDegrees + declinationDegrees);
 
 /// Converts a [trueHeadingDegrees] back to magnetic by subtracting the
 /// east-positive [declinationDegrees]. Result is normalized to `[0, 360)`.
 double trueToMagneticHeading(
   double trueHeadingDegrees,
   double declinationDegrees,
-) =>
-    normalizeDegrees(trueHeadingDegrees - declinationDegrees);
+) => normalizeDegrees(trueHeadingDegrees - declinationDegrees);
 
 /// Infers the effective declination implied by a paired magnetic/true heading
 /// (as iOS supplies), returned in `[-180, 180)`.
 double declinationFromHeadings({
   required double magneticHeadingDegrees,
   required double trueHeadingDegrees,
-}) =>
-    shortestAngularDifference(magneticHeadingDegrees, trueHeadingDegrees);
+}) => shortestAngularDifference(magneticHeadingDegrees, trueHeadingDegrees);

@@ -18,10 +18,10 @@ class AngularLowPassFilter {
   /// smoother but lag more; `1` freezes on the first sample. The factor maps to
   /// a per-sample new-value weight of `1 - smoothingFactor`.
   AngularLowPassFilter(this.smoothingFactor)
-      : assert(
-          smoothingFactor >= 0 && smoothingFactor <= 1,
-          'smoothingFactor must be in [0, 1]',
-        );
+    : assert(
+        smoothingFactor >= 0 && smoothingFactor <= 1,
+        'smoothingFactor must be in [0, 1]',
+      );
 
   /// The smoothing factor in `[0, 1]`; see the constructor.
   final double smoothingFactor;

@@ -1,5 +1,11 @@
 include: package:very_good_analysis/analysis_options.yaml
 
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+
 linter:
   rules:
     # The example is illustrative, not a published API.

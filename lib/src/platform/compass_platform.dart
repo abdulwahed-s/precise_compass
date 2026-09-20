@@ -30,19 +30,21 @@ abstract class CompassPlatform {
 class MethodChannelCompassPlatform extends CompassPlatform {
   /// Event channel carrying the raw heading sample stream.
   @visibleForTesting
-  static const EventChannel eventChannel =
-      EventChannel('precise_compass/events');
+  static const EventChannel eventChannel = EventChannel(
+    'precise_compass/events',
+  );
 
   /// Method channel for one-shot calls (capability probe).
   @visibleForTesting
-  static const MethodChannel methodChannel =
-      MethodChannel('precise_compass/methods');
+  static const MethodChannel methodChannel = MethodChannel(
+    'precise_compass/methods',
+  );
 
   @override
   Stream<RawCompassData> rawHeadingStream(CompassConfig config) {
-    return eventChannel
-        .receiveBroadcastStream(encodeConfig(config))
-        .map((dynamic event) {
+    return eventChannel.receiveBroadcastStream(encodeConfig(config)).map((
+      dynamic event,
+    ) {
       final map = (event as Map).cast<Object?, Object?>();
       return RawCompassData.fromMap(map);
     });
@@ -50,8 +52,9 @@ class MethodChannelCompassPlatform extends CompassPlatform {
 
   @override
   Future<CompassCapabilities> capabilities() async {
-    final result = await methodChannel
-        .invokeMapMethod<Object?, Object?>('getCapabilities');
+    final result = await methodChannel.invokeMapMethod<Object?, Object?>(
+      'getCapabilities',
+    );
     return decodeCapabilities(result);
   }
 
@@ -60,14 +63,14 @@ class MethodChannelCompassPlatform extends CompassPlatform {
   /// forward-compatibility.
   @visibleForTesting
   static Map<String, Object?> encodeConfig(CompassConfig config) => {
-        'reference': config.reference.name,
-        'fusionMode': config.fusionMode.name,
-        'rate': config.rate.name,
-        'detectCalibration': config.detectCalibration,
-        'suppressIosCalibrationHud': config.suppressIosCalibrationHud,
-        'magneticFieldMin': config.magneticFieldBand.min,
-        'magneticFieldMax': config.magneticFieldBand.max,
-      };
+    'reference': config.reference.name,
+    'fusionMode': config.fusionMode.name,
+    'rate': config.rate.name,
+    'detectCalibration': config.detectCalibration,
+    'suppressIosCalibrationHud': config.suppressIosCalibrationHud,
+    'magneticFieldMin': config.magneticFieldBand.min,
+    'magneticFieldMax': config.magneticFieldBand.max,
+  };
 
   /// Decodes the native capabilities map, computing [recommendFusionMode] for
   /// the recommended mode. A `null`/empty map yields

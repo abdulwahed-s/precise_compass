@@ -20,14 +20,14 @@ class CompassCapabilities {
 
   /// Capabilities for a device with no usable heading hardware.
   factory CompassCapabilities.none() => const CompassCapabilities(
-        hasRotationVector: false,
-        hasGeomagneticRotationVector: false,
-        hasMagnetometer: false,
-        hasGyroscope: false,
-        hasAccelerometer: false,
-        supportsTrueHeading: false,
-        recommendedMode: FusionMode.auto,
-      );
+    hasRotationVector: false,
+    hasGeomagneticRotationVector: false,
+    hasMagnetometer: false,
+    hasGyroscope: false,
+    hasAccelerometer: false,
+    supportsTrueHeading: false,
+    recommendedMode: FusionMode.auto,
+  );
 
   /// Whether the OS rotation-vector sensor is present (Android
   /// `TYPE_ROTATION_VECTOR`; assumed present on iOS via `CLHeading`).
@@ -74,14 +74,14 @@ class CompassCapabilities {
 
   @override
   int get hashCode => Object.hash(
-        hasRotationVector,
-        hasGeomagneticRotationVector,
-        hasMagnetometer,
-        hasGyroscope,
-        hasAccelerometer,
-        supportsTrueHeading,
-        recommendedMode,
-      );
+    hasRotationVector,
+    hasGeomagneticRotationVector,
+    hasMagnetometer,
+    hasGyroscope,
+    hasAccelerometer,
+    supportsTrueHeading,
+    recommendedMode,
+  );
 
   @override
   String toString() =>

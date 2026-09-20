@@ -36,20 +36,20 @@ class CompassReading {
   /// [confidence] of `0`. Emitted instead of throwing, so a `null`-free,
   /// always-on stream can degrade gracefully.
   factory CompassReading.unavailable({DateTime? timestamp}) => CompassReading(
-        headingMagnetic: null,
-        headingTrue: null,
-        heading: double.nan,
-        accuracyDegrees: -1,
-        accuracy: CompassAccuracy.unknown,
-        confidence: 0,
-        shouldCalibrate: false,
-        calibrationStatus: CalibrationStatus.unknown,
-        source: HeadingSource.unavailable,
-        magneticFieldMagnitude: null,
-        pitch: null,
-        roll: null,
-        timestamp: timestamp ?? DateTime.now(),
-      );
+    headingMagnetic: null,
+    headingTrue: null,
+    heading: double.nan,
+    accuracyDegrees: -1,
+    accuracy: CompassAccuracy.unknown,
+    confidence: 0,
+    shouldCalibrate: false,
+    calibrationStatus: CalibrationStatus.unknown,
+    source: HeadingSource.unavailable,
+    magneticFieldMagnitude: null,
+    pitch: null,
+    roll: null,
+    timestamp: timestamp ?? DateTime.now(),
+  );
 
   /// Magnetic heading in degrees `[0, 360)`, or `null` if no magnetometer
   /// reading is available.
@@ -166,26 +166,27 @@ class CompassReading {
 
   @override
   int get hashCode => Object.hash(
-        headingMagnetic,
-        headingTrue,
-        heading.isNaN ? double.nan.hashCode : heading,
-        accuracyDegrees,
-        accuracy,
-        confidence,
-        shouldCalibrate,
-        calibrationStatus,
-        source,
-        magneticFieldMagnitude,
-        pitch,
-        roll,
-        timestamp,
-      );
+    headingMagnetic,
+    headingTrue,
+    heading.isNaN ? double.nan.hashCode : heading,
+    accuracyDegrees,
+    accuracy,
+    confidence,
+    shouldCalibrate,
+    calibrationStatus,
+    source,
+    magneticFieldMagnitude,
+    pitch,
+    roll,
+    timestamp,
+  );
 
   // Treats NaN == NaN so `unavailable` readings compare equal by value.
   static bool _sameDouble(double a, double b) => a == b || (a.isNaN && b.isNaN);
 
   @override
-  String toString() => 'CompassReading(heading: ${heading.toStringAsFixed(1)}, '
+  String toString() =>
+      'CompassReading(heading: ${heading.toStringAsFixed(1)}, '
       'accuracy: ${accuracyDegrees.toStringAsFixed(1)}°/$accuracy, '
       'confidence: ${confidence.toStringAsFixed(2)}, source: $source, '
       'shouldCalibrate: $shouldCalibrate)';

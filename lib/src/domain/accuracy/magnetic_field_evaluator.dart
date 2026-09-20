@@ -37,7 +37,8 @@ class MagneticFieldQuality {
   double get score => plausibilityScore * stabilityScore;
 
   @override
-  String toString() => 'MagneticFieldQuality('
+  String toString() =>
+      'MagneticFieldQuality('
       'mean: ${mean.toStringAsFixed(1)}µT, '
       'sd: ${standardDeviation.toStringAsFixed(1)}, '
       'plausible: $isPlausible, score: ${score.toStringAsFixed(2)})';
@@ -93,7 +94,7 @@ class MagneticFieldEvaluator {
     final variance = _window.length < 2
         ? 0.0
         : _window.map((v) => (v - mean) * (v - mean)).reduce((a, b) => a + b) /
-            _window.length;
+              _window.length;
     final sd = math.sqrt(variance);
 
     final isPlausible = band.contains(mean);
@@ -102,8 +103,10 @@ class MagneticFieldEvaluator {
       plausibilityScore = 1;
     } else {
       final excess = mean < band.min ? band.min - mean : mean - band.max;
-      plausibilityScore =
-          (1 - excess / plausibilityToleranceUT).clamp(0.0, 1.0);
+      plausibilityScore = (1 - excess / plausibilityToleranceUT).clamp(
+        0.0,
+        1.0,
+      );
     }
     final stabilityScore = (1 - sd / stabilityScaleUT).clamp(0.0, 1.0);
 

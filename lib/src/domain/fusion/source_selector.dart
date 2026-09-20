@@ -38,7 +38,8 @@ FusionMode resolveFusionMode(
           ? FusionMode.rotationVector
           : recommendFusionMode(caps);
     case FusionMode.geomagnetic:
-      final canGeomagnetic = caps.hasGeomagneticRotationVector ||
+      final canGeomagnetic =
+          caps.hasGeomagneticRotationVector ||
           (caps.hasMagnetometer && caps.hasAccelerometer);
       return canGeomagnetic
           ? FusionMode.geomagnetic

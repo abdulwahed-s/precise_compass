@@ -9,16 +9,15 @@ void main() {
     bool magnetometer = false,
     bool gyroscope = false,
     bool accelerometer = false,
-  }) =>
-      CompassCapabilities(
-        hasRotationVector: rotationVector,
-        hasGeomagneticRotationVector: geomagnetic,
-        hasMagnetometer: magnetometer,
-        hasGyroscope: gyroscope,
-        hasAccelerometer: accelerometer,
-        supportsTrueHeading: false,
-        recommendedMode: FusionMode.auto,
-      );
+  }) => CompassCapabilities(
+    hasRotationVector: rotationVector,
+    hasGeomagneticRotationVector: geomagnetic,
+    hasMagnetometer: magnetometer,
+    hasGyroscope: gyroscope,
+    hasAccelerometer: accelerometer,
+    supportsTrueHeading: false,
+    recommendedMode: FusionMode.auto,
+  );
 
   group('recommendFusionMode', () {
     test('prefers the rotation vector', () {

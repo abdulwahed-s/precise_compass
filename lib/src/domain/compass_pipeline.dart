@@ -31,15 +31,14 @@ const int kStabilityWindow = 10;
 class CompassPipeline {
   /// Creates a pipeline for the given [config].
   CompassPipeline({required this.config})
-      : _magneticFilter = AngularLowPassFilter(
-          config.smoothingFactor ?? kDefaultSmoothingFactor,
-        ),
-        _trueFilter = AngularLowPassFilter(
-          config.smoothingFactor ?? kDefaultSmoothingFactor,
-        ),
-        _fieldEvaluator =
-            MagneticFieldEvaluator(band: config.magneticFieldBand),
-        _calibration = CalibrationStateMachine();
+    : _magneticFilter = AngularLowPassFilter(
+        config.smoothingFactor ?? kDefaultSmoothingFactor,
+      ),
+      _trueFilter = AngularLowPassFilter(
+        config.smoothingFactor ?? kDefaultSmoothingFactor,
+      ),
+      _fieldEvaluator = MagneticFieldEvaluator(band: config.magneticFieldBand),
+      _calibration = CalibrationStateMachine();
 
   /// The configuration governing this pipeline.
   final CompassConfig config;
@@ -73,8 +72,9 @@ class CompassPipeline {
     final smoothedMagnetic = raw.magneticHeading != null
         ? _magneticFilter.filter(raw.magneticHeading!)
         : null;
-    final smoothedTrue =
-        raw.trueHeading != null ? _trueFilter.filter(raw.trueHeading!) : null;
+    final smoothedTrue = raw.trueHeading != null
+        ? _trueFilter.filter(raw.trueHeading!)
+        : null;
 
     final primary = switch (config.reference) {
       HeadingReference.magnetic => smoothedMagnetic ?? smoothedTrue,

@@ -8,7 +8,7 @@ import 'package:precise_compass/src/api/enums.dart';
 class ClampRange {
   /// Creates a range. [min] must be `<=` [max].
   const ClampRange(this.min, this.max)
-      : assert(min <= max, 'min must be <= max');
+    : assert(min <= max, 'min must be <= max');
 
   /// Lower bound (inclusive).
   final double min;
@@ -48,10 +48,10 @@ class CompassConfig {
     this.suppressIosCalibrationHud = false,
     this.magneticFieldBand = defaultMagneticFieldBand,
   }) : assert(
-          smoothingFactor == null ||
-              (smoothingFactor >= 0 && smoothingFactor <= 1),
-          'smoothingFactor must be in [0, 1]',
-        );
+         smoothingFactor == null ||
+             (smoothingFactor >= 0 && smoothingFactor <= 1),
+         'smoothingFactor must be in [0, 1]',
+       );
 
   /// The default plausible magnetic-field band, ≈ Earth's field at the surface
   /// (25–65 µT). Readings outside this band suggest interference.
@@ -121,12 +121,12 @@ class CompassConfig {
 
   @override
   int get hashCode => Object.hash(
-        reference,
-        fusionMode,
-        rate,
-        smoothingFactor,
-        detectCalibration,
-        suppressIosCalibrationHud,
-        magneticFieldBand,
-      );
+    reference,
+    fusionMode,
+    rate,
+    smoothingFactor,
+    detectCalibration,
+    suppressIosCalibrationHud,
+    magneticFieldBand,
+  );
 }

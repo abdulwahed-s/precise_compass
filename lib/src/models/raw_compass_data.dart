@@ -86,7 +86,8 @@ class RawCompassData {
   final DateTime timestamp;
 
   @override
-  String toString() => 'RawCompassData(source: $source, '
+  String toString() =>
+      'RawCompassData(source: $source, '
       'mag: $magneticHeading, true: $trueHeading, '
       'acc: $accuracyDegrees, status: $osAccuracyStatus, '
       'field: $magneticFieldMagnitude)';
